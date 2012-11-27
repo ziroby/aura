@@ -12,10 +12,10 @@
 
         h1.header-logo
           a href="#"
-            span.char-1 a
-            span.char-2 u
-            span.char-3 r
-            span.char-4 a
+            span.char.char-1 a
+            span.char.char-2 u
+            span.char.char-3 r
+            span.char.char-4 a
 
         nav.header-menu
           ul
@@ -35,60 +35,60 @@
         a.button.faded href="#" View on Github
 
 section.framework-introduction
+  header.heading.row.component-title
+    .twelve.columns
+      h2.title Why aura ?
+      h4 Aura is a decoupled, event-driven architecture for developing widget-based applications.
   .row
-    header.heading
-      .twelve.columns
-        h2 Why aura ?
     .four.columns
-      p There are many ways to develop Javascript applications, and almost as many frameworks.
-      p Bug giving your application a structure that stays safe and scales gracefully along your application requires expertise and foresight.
-      p So many apps get rewritten over and over again because you only see their flaws looking back.
+      p Giving your application a structure that stays safe and scales gracefully along your application requires expertise and foresight.
 
     .four.columns
-      p Aura implements a set of proved patterns and organizes them so you can rest assured that your code does not turn into spaghetti over time, while trying to stay framework-agnostic
-      p Aura is a decoupled, event-driven architecture for developing widget-based applications.
       p Aura introduces proven patterns and best practices for developing maintainable applications, while giving you greater control over widget-based applications.
-      p Aura gives you complete control of a widget's lifecycle, allowing developers to dynamically start, stop, reload and clean-up parts of their application as needed.
-      p The project is based on concepts discussed by Nicholas Zakas in Scalable Application Architecture and by Addy in Large-scale Application Development.
 
     .four.columns
-      h2 Aura to the rescue.
-      p Aura implements a set of proved patterns and organizes them so you can rest assured that your code does not turn into spaghetti over time, while trying to stay framework-agnostic
-      p Aura is a decoupled, event-driven architecture for developing widget-based applications.
-      p Aura introduces proven patterns and best practices for developing maintainable applications, while giving you greater control over widget-based applications.
       p Aura gives you complete control of a widget's lifecycle, allowing developers to dynamically start, stop, reload and clean-up parts of their application as needed.
-      p The project is based on concepts discussed by Nicholas Zakas in Scalable Application Architecture and by Addy in Large-scale Application Development.
+ 
+
 
 section.framework-architecture
   .row
 
-    .twelve.columns
-      h2 Aura's multi-tiered architecture.
+    .twelve.columns.component-title
+      h2.title Aura's multi-tiered architecture.
+
+      .row
+        .four.columns.offset-by-four
+          .element
+            h3 Vendors
+            p (jQuery, require.js ...)
+
+      .row
+        .two.columns.offset-by-five
+          .element
+            h3 Base
+
+      .row
+        .four.columns.offset-by-four
+          .element.round
+            h3 Core
 
       .row
 
         .three.columns
-
-          .architecture-component
-            .component-visual
+          .element
             h3.component-title Application Core
 
         .three.columns
-
-          .architecture-component
-            .component-visual
+          .element
             h3.component-title Sandbox
 
         .three.columns
-
-          .architecture-component
-            .component-visual
+          .element
             h3.component-title Module
 
         .three.columns
-
-          .architecture-component
-            .component-visual
+          .element
             h3.component-title Widget
 
 footer.footer

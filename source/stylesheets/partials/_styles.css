@@ -373,14 +373,15 @@ code { font-family: Monaco, Menlo, Consolas, "Courier New", monospace; }
   margin: 0;
   float: left;
   font-size: 20px;
-  font-weight: 800;
-  text-transform: uppercase; }
-  .header-logo .char-2,
+  font-weight: 400;
+  letter-spacing:0.2em;
+}
+/*  .header-logo .char-2,
   .header-logo .char-3 {
     margin-left: -3px; }
   .header-logo .char-4 {
     margin-left: -2px; }
-
+*/
 .header-menu {
   float: right;
   font-size: 14px; }
@@ -425,11 +426,11 @@ code { font-family: Monaco, Menlo, Consolas, "Courier New", monospace; }
   right: 0;
   background-position: 100% 50%;
   opacity: 0.15; }
-  .glow-red { background-image: url('../images/aura-red.png'); }
-  .glow-green { background-image: url('../images/aura-green.png'); }
-  .glow-blue { background-image: url('../images/aura-blue.png'); }
-  .glow-yelow { background-image: url('../images/aura-yellow.png'); }
-  .glow-violet { background-image: url('../images/aura-violet.png'); }
+  .glow-red { background-image: url('/images/aura-red.png'); }
+  .glow-green { background-image: url('/images/aura-green.png'); }
+  .glow-blue { background-image: url('/images/aura-blue.png'); }
+  .glow-yelow { background-image: url('/images/aura-yellow.png'); }
+  .glow-violet { background-image: url('/images/aura-violet.png'); }
 
 .framework-introduction,
 .framework-architecture {
@@ -512,3 +513,4 @@ code { font-family: Monaco, Menlo, Consolas, "Courier New", monospace; }
         text-decoration: none; }
     .credits p:last-child {
       margin: 0; }
+
