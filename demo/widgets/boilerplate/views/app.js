@@ -1,0 +1,1 @@
+define(["sandbox","text!../templates/sample.html"],function(e,t){"use strict";var n=e.mvc.View({sampleTemplate:e.template.parse(t),events:{},initialize:function(){this.$el.html(t)},render:function(){}});return n});

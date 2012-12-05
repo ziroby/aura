@@ -1,0 +1,1 @@
+define(["sandbox"],function(e){"use strict";var t=e.mvc.Model({defaults:{title:"",completed:!1},initialize:function(){this.get("title")||this.set({title:this.defaults.title})},toggle:function(){this.save({completed:!this.get("completed")})},clear:function(){this.destroy()}});return t});

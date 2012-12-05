@@ -1,0 +1,1 @@
+define(["sandbox","./views/app"],function(e,t){"use strict";return function(n){new t({el:e.dom.find(n.element)}),e.emit("bootstrap","todos"),e.on("bootstrap",function(t){e.log("Todos-bootstrap message from: "+t)}),e.on("set-language",function(t){e.log("Language set to: "+t),window.document.cookie="lang=<lang>"+t+"</lang>",window.document.location.reload()})}});

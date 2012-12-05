@@ -1,0 +1,4 @@
+// ## Sandbox
+// Implements the sandbox pattern and set up an standard interface for modules.
+// This is a subset of the mediator functionality.
+define(function(){"use strict";return{create:function(e,t){var n={};return n.log=function(){var n=Array.prototype.concat.apply([t],arguments);e.log.apply(e,n)},n.on=function(n,r,i){e.on(n,t,r,i||this)},n.emit=function(t){e.emit.apply(e,arguments)},n.start=function(t){e.start.apply(e,arguments)},n.stop=function(t,n){e.stop.apply(e,arguments)},n.dom={find:function(t,n){return e.dom.find(t,n)}},n.events={listen:function(t,n,r,i){e.events.listen(t,n,r,i)},bindAll:e.events.bindAll},n.util={each:e.util.each,extend:e.util.extend},n.data=e.data,n.template=e.template,n}}});

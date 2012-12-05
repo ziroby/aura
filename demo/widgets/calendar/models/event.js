@@ -1,0 +1,1 @@
+define(["sandbox"],function(e){"use strict";var t=e.mvc.Model({defaults:{start:$.fullCalendar.formatDate(new Date,"u"),end:!1,title:"New Event",color:"#33a1de"}});return t});

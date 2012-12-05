@@ -1,0 +1,4 @@
+// ## Sandbox Extension
+// @fileOverview Extend the aura-sandbox (facade pattern)
+// @todo This is a stupid place to include jquery ui
+define(["perms","backbone","localstorage","jquery_ui"],function(e,t,n){"use strict";return{extend:function(e,r){return e.data.Store=n,e.mvc={},e.widgets={},e.mvc.View=function(e){return t.View.extend(e)},e.mvc.Model=function(e){return t.Model.extend(e)},e.mvc.Collection=function(e){return t.Collection.extend(e)},e.mvc.Router=function(e){return t.Router.extend(e)},e.widgets.stop=function(t,n){return e.stop.apply(this,arguments)},e.widgets.start=function(t,n){return e.start.apply(this,arguments)},e}}});
