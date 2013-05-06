@@ -1,1 +1,0 @@
-define(["sandbox","../models/event"],function(e,t){"use strict";var n=e.mvc.Collection({model:t,localStorage:new e.data.Store("events-backbone-require")});return n});

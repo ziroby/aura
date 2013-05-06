@@ -1,1 +1,370 @@
-<!DOCTYPE html><html><head><title>Aura</title><meta charset="utf-8" /><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /><meta content="width=device-width" name="viewport" /><meta content="" name="description" /><meta content="hull : build social apps in minutes, not weeks" property="og:title" /><meta content="company" property="og:type" /><meta content="hull" property="og:site_name" /><meta content="http://hull.io" property="og:url" /><meta content="null" property="og:image" /><meta property="og:description" /><link href="images/favicon.ico" rel="icon" type="image/ico" /><link href="stylesheets/style.css" media="screen" rel="stylesheet" type="text/css" /></head><script src="javascripts/modernizr.js" type="text/javascript"></script><body class="index"></body><div class="container"><div class="header"><div id="particles"></div><header class="heading row"><div class="twelve columns"><div class="header-inner"><a class="logo" href="/aura"><span class="char char-1">a</span><span class="char char-2">u</span><span class="char char-3">r</span><span class="char char-4">a</span></a><nav class="header-menu"><ul><li><a href="https://github.com/addyosmani/aura/blob/master/README.md">Docs</a></li><li><a href="https://github.com/addyosmani/aura/blob/master/README.md">Demo</a></li><li><a href="https://github.com/addyosmani/aura/">View on Github</a></li></ul></nav></div></div></header><section class="splash row"><div class="splash-inner twelve columns"><h2 class="title">A clean and scalable architecture<br>for complex javascript applications.</h2><a class="button" href="https://github.com/addyosmani/aura/archive/master.zip">Download</a><a class="button faded" href="https://github.com/addyosmani/aura/">View on Github</a><a class="button faded" href="demo/">Demo</a></div></section></div><section class="framework-introduction"><header class="heading row component-title"><div class="twelve columns"><h2 class="title">Why aura ?</h2><h4>Aura is a decoupled, event-driven architecture for developing widget-based applications.</h4></div><div class="four columns"><p>Giving your application a structure that stays safe and scales gracefully along your application requires expertise and foresight.</p></div><div class="four columns"><p>Aura introduces proven patterns and best practices for developing maintainable applications, while giving you greater control over widget-based applications.</p></div><div class="four columns"><p>Aura gives you complete control of a widget's lifecycle, allowing developers to dynamically start, stop, reload and clean-up parts of their application as needed.</p></div></header></section><div class="popovers"><div class="popover" id="popover_sandbox"><h4>Powered by the Facade pattern.</h4><ul><li><p><strong>Provides a limited, lightweight API layer on top of the Core for the rest of an application to communicate through.</strong> Rather than exposing say, the entire API for a JavaScript library, we instead only expose those parts that developers in the project will need or are safe to use. This is particularly useful when working in teams. </p></li><li><p>The Sandbox includes a permissions layer, allowing you to configure permissions for widgets such as whether a specific widget has the right to render to the page etc.</p></li></ul></div><div class="popover" id="popover_widgets"><h4>Widgets represent a complete unit of a page. They could be a calendar, a news block, a todo list or anything else.</h4><ul><li><p><strong>In Backbone.js terms, widgets are composed of Models, Views, Collections and Routers as well as any templates needed for the widget to rendered.</strong></p></li><li><p>Widgets should be developed such that any number of instances of them could exist on a page in harmony.</p></li><li><p>Publish/Subscribe can be used to communicate between widgets. Alternatively, direct communication (as demonstrated by the controls widget in our examples) may be, however this is discouraged where Pub/Sub can be used instead.</p></li></ul><h3>All of the files and demo widgets in Aura use AMD as their module format of choice</h3><ul><li><p>These can of course be used with r.js for compilation and optimization if concerned about too many script files (compilation should always be used for production-level apps if using AMD in any situation)</p></li><li><p>Whilst not an Aura feature, we also take advantage of RequireJS 2.0's shim capability to avoid the need to use patched versions of Backbone.js and Underscore.js (a concern with earlier versions of the project).</p></li></ul></div></div><section class="framework-architecture align-center"><div class="row"><div class="twelve columns component-title"><h2 class="title">Aura's multi-tiered architecture.</h2></div></div><div class="row upper"><div class="four columns offset-by-two"><div class="node widget"><div class="pop gallery" data-placement="right" data-source="#popover_widgets" data-title="Widgets"><img class="svg" src="images/gallery.svg" /></div><div class="pop sandbox" data-placement="right" data-source="#popover_sandbox" data-title="Sandbox"><img class="svg" src="images/sandbox.svg" /></div><div class="message"><img class="svg" src="images/message.svg" /></div><strong class="title">Gallery Widget</strong></div></div><div class="four columns end"><div class="node widget right"><div class="pop mail" data-placement="left" data-source="#popover_widgets" data-title="Widgets"><img class="svg" src="images/mail.svg" /></div><div class="pop sandbox" data-placement="left" data-source="#popover_sandbox" data-title="Sandbox"><img class="svg" src="images/sandbox.svg" /></div><div class="message"><img class="svg" src="images/message.svg" /></div><strong class="title">Mail Widget</strong></div></div></div><div class="row"><div class="four columns"><div class="node widget"><div class="pop comment" data-placement="right" data-source="#popover_widgets" data-title="Widgets"><img class="svg" src="images/comment.svg" /></div><div class="pop sandbox" data-placement="right" data-source="#popover_sandbox" data-title="Sandbox"><img class="svg" src="images/sandbox.svg" /></div><div class="message"><img class="svg" src="images/message.svg" /></div><strong class="title">Comment Widget</strong></div></div><div class="four columns"><div class="node widget right"><div class="pop calendar" data-placement="left" data-source="#popover_widgets" data-title="Widgets"><img class="svg" src="images/calendar.svg" /></div><div class="pop sandbox" data-placement="left" data-source="#popover_sandbox" data-title="Sandbox"><img class="svg" src="images/sandbox.svg" /></div><div class="message"><img class="svg" src="images/message.svg" /></div><strong class="title">Calendar Widget</strong></div></div></div><div class="row"><div class="four columns centered"><div class="node receive"><div class="receiver"><img class="svg" src="images/emit.svg" /></div></div></div></div><div class="row"><div class="four columns centered"><div class="popover" id="popover_core"><h4>The Core has a number of responsibilities. Powered by the Mediator pattern.</h4><ul><li><p><strong>Provides the ability to manage a widget's lifecycle (start, stop, cleanup).</strong> This is powered by work we've done to expand on top of RequireJS 2.0's undef feature for unloading modules. Aura works around RequireJS's limitation of not being able to resolve a modules dependencies to allow the easy unloading of an entire widget. Unloading a widget equates to removing it from the RequireJS caches, deleting instance references to them (which can lower memory) and of course, cleaning up any DOM elements the widget was using. </p></li><li><p><strong>Implements aliases for DOM manipulation, templating and other lower-level utilities that pipe back to a library of choice.</strong> The idea here is that rather than interfacing with the libraries directly, accessing the Core aliases (through the Sandbox) allow developers to switch out the libraries they use at a later date with minimum impact to their application. </p></li><li><p><strong>Exposes Publish/Subscribe functionality that can be used for decoupled communication between parts of an application.</strong> Similar to the concept above, our Pub/Sub implementation can be easily replaced with that of another library and it should still work fine. </p></li></ul></div><div class="node core pop" data-placement="top" data-source="#popover_core" data-title="Application Core"><div class="cog"><img class="svg" src="images/core.svg" /></div><div class="title">Core</div></div><div class="connector"></div></div></div><div class="row"><div class="four columns centered"><div class="popover" id="popover_base"><h4>The Base layer</h4><ul><li><p></p></li><li><p></p></li></ul></div><div class="node base"><div class="pop wrench" data-placement="top" data-source="#popover_base" data-title="Base"><img class="svg" src="images/base.svg" /></div><div class="title">Base</div></div><div class="connector"></div></div></div><div class="row"><div class="four columns centered"><div class="popover" id="popover_vendors"><h4>The Vendors</h4><ul><li><p>Underscore.js, Backbone.js, Require.js, Handlebars, ...</p></li></ul></div><div class="node vendors"><div class="pop layers" data-placement="top" data-source="#popover_vendors" data-title="Vendors"><img class="svg" src="images/vendors.svg" /></div><div class="title">Vendors</div></div><div class="connector"></div></div></div></section></div><footer class="footer"><section class="credits"><div class="row"><div class="eight columns"><p><strong>Aura is the work of :</strong> Addy Osmani, Dustin Boston, Gerson Goulart, Tony Narlock, Sindre Sorhus, Peter Rudolfsen, Robert Djurasaj, Joel Hooks, Dan Lynch </p></div><div class="four columns"><ul><li>© 2012 Addy Osmani</li><li>Licensed under the MIT license</li><li><a href="http://hull.io">Design by hull.io</a></li></ul></div></div></section></footer><script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script><script src="javascripts/vendors.js" type="text/javascript"></script><script src="javascripts/app.js" type="text/javascript"></script></html>
+<!doctype html>
+<html>
+  <head>
+    <title>Aura</title>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width" name="viewport" />
+    <meta content="Aura" property="og:title" />
+    <meta content="Aura" property="og:site_name" />
+    <meta content="Aura JS" name="description" />
+    <meta content="http://hull.io" property="og:url" />
+    <meta content="/assets/images/logo.png" property="og:image" />
+    <link href="assets/images/favicon.ico" rel="icon" type="image/ico" />
+    <link href="assets/stylesheets/style.css" media="screen" rel="stylesheet" type="text/css" />
+    <script src="assets/javascripts/modernizr.js" type="text/javascript"></script>
+  </head>
+<body>
+  <div class="header">
+  <div id="particles"></div>
+  <div class="hero-unit">
+    <div class="logo-block">
+      <div class="row-fluid">
+        <div class="span4 logo">
+          <img src="assets/images/logo.png" />
+        </div>
+        <div class="span8">
+          <h2 class="title">
+            A clean and scalable architecture for complex javascript applications. </h2>
+        </div>
+      </div>
+    </div>
+    <a class="button" href="https://github.com/aurajs/aura/zipball/master">Download .zip</a>
+    <a class="button" href="https://github.com/aurajs/aura/tarball/master">Download .tar.gz</a>
+    <a class="button faded" href="https://github.com/aurajs/aura">View on Github</a>
+  </div>
+</div>
+
+  <section class="container introduction">
+    <header class="row">
+      <div class='span3 offset1'>  <div class="nav-container" id="sidenav">
+    <ul class='nav nav-list'>
+      </li><li class='level_1'><a href="#aura-0-9pre">Aura 0.9pre</a><ul class='nav nav-list'><li class='level_2'><a href="#why-aura">Why Aura?</a></li><li class='level_2'><a href="#concepts">Concepts</a></li><li class='level_2'><a href="#getting-started">Getting started</a></li><li class='level_2'><a href="#running-tests">Running Tests</a></li><li class='level_2'><a href="#creating-an-application">Creating an Application</a></li><li class='level_2'><a href="#creating-a-widget">Creating a Widget</a></li><li class='level_2'><a href="#declaring-a-widget">Declaring a Widget</a></li><li class='level_2'><a href="#creating-an-extension">Creating an extension</a></li><li class='level_2'><a href="#using-extensions">Using extensions</a></li><li class='level_2'><a href="#debugging">Debugging</a></li></ul></li><li class='level_1'><a href="#resources">Resources</a><ul class='nav nav-list'><li class='level_2'><a href="#yeoman-generator">Yeoman generator</a></li><li class='level_2'><a href="#usage">Usage</a></li><li class='level_2'><a href="#generators">Generators</a></li><li class='level_2'><a href="#aura-development-docs">Aura Development docs</a></li></ul></li><li class='level_1'><a href="#faqs">FAQs</a><ul class='nav nav-list'><li class='level_2'><a href="#why-do-developers-use-us">Why do developers use us?</a></li></ul></li><li class='level_1'><a href="#contribute">Contribute</a></li><li class='level_1'><a href="#project-status">Project status</a>
+    </ul>
+  </div>
+</div>
+      <div class="span6"><h1>Aura 0.9pre</h1>
+
+<p><a href="https://travis-ci.org/aurajs/aura"><img alt="Build Status" src="https://travis-ci.org/aurajs/aura.png?branch=master" /></a></p>
+
+<p>Aura is an event-driven architecture for developing widget-based applications that scale. It works great with <a href="http://backbonejs.org">Backbone.js</a>, but is framework-agnostic, adapts many best-practice patterns for developing maintainable apps and has first-class support for modern tools like <a href="http://bower.io">Bower</a>, <a href="http://gruntjs.com">Grunt</a> and <a href="http://yeoman.io">Yeoman</a>.</p>
+
+<p>Aura has been used to develop applications like <a href="http://www.bobholt.me/2012/09/how-it-was-built-mit-reap/">MIT&#39;s Reap</a> and is currently under active development.</p>
+
+<p>Want to look at some sample apps built with Aura? Check out the <a href="https://github.com/sbellity/aura-github">GitHub client</a>, the <a href="https://github.com/hull/Github-Mobile/tree/with-hull">GitHub Mobile client</a>,  an Aura <a href="https://github.com/sbellity/aura-todos/">Todo</a> app implemented <a href="https://github.com/alexanderbeletsky/todomvc-aura">two</a> ways and <a href="https://github.com/hull/hullagram">Hullagram</a> - an Instagram clone built with Aura and <a href="http://hull.io">Hull.io</a>.
+You can also read <a href="http://blog.hull.io/post/46504817377/how-to-build-your-own-twitter-like-open-source-page">how to build your own Twitter-like &ldquo;Open Source&rdquo; page</a> using Aura.</p>
+
+<h2>Why Aura?</h2>
+
+<ul>
+<li>It&#39;s basically <strong>glue</strong> for your application widgets, making it trivial to tie together a number of independently created widgets into a fully functional application.</li>
+<li>A complete event-bus supporting <strong>application-level and widget-level communication</strong> mean you have control over what is getting triggered in your app</li>
+<li>Specify an API end-point for widgets easily and just <strong>use data-attributes to include any widget</strong> or widgets. Minimal JavaScript for more capabilities.</li>
+<li><strong>Abstract away utility libraries</strong> you are using (templating, DOM manipulation) so that you can swap them out for alternatives at any time without a great deal of effort</li>
+<li>Hit the ground running quickly widgets into <strong>reusable modules using AMD</strong>.</li>
+<li>Bower is a first-class citizen in Aura, making it easier to <strong>manage your application dependencies</strong></li>
+<li>The web platform is moving towards using scoped styles and shadow DOM for keeping parts of your page safe from third-party content that might affect it. Aura does the same for communications by introducing per-widget <strong>sandboxes</strong> for your events</li>
+<li>Tooling for <strong>scaffolding</strong> out new widgets without having to write as much boilerplate</li>
+<li>Can be used with your MVC framework of choice - we&#39;re just there as a helper.</li>
+<li>First-class support for the Hull.io platform. If you don&#39;t want to create a widget yourself, you can easily use them as a widget-source and create apps in less time.</li>
+<li>Extensible via the extensions system, which make a good basis for a rich ecosystem around the project.</li>
+</ul>
+
+<h2>Concepts</h2>
+
+<h4>The <code>Aura</code> object</h4>
+
+<p>Your application will be an instance of the <code>Aura</code> object.</p>
+
+<p>Its responsibilities are to load extensions when the app starts and clean them up when the app stops.</p>
+
+<h4>Extension</h4>
+
+<p>Extensions are loaded in your application when it starts. They allow you to add features to the application, and are available to the widgets through their <code>sandbox</code>.</p>
+
+<h4>Core</h4>
+
+<p>The <code>core</code> implements aliases for DOM manipulation, templating and other lower-level utilities that pipe back to a library of choice. Aliases allow switching libraries with minimum impact on your application.</p>
+
+<h4>Sandbox</h4>
+
+<p>A <code>sandbox</code> is just a way to implement the <a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/#facadepatternjavascript">facade</a> pattern on top of features provided by <code>core</code>. It lets you expose the parts of a JavaScript library that are safe to use instead of exposing the entire API. This is particularly useful when working in teams.</p>
+
+<p>When your app starts, it will create an instance of <code>sandbox</code> in each of your widgets.</p>
+
+<h4>Widget</h4>
+
+<p>A widget represents a unit of a page. Each widget is independent.
+This means that they know nothing about each other. To make them communicate, a <a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/#mediatorpatternjavascript">Publish/Subscribe (Mediator)</a> pattern is used.</p>
+
+<h2>Getting started</h2>
+
+<p>The simplest usable Aura app using a widget and extension can be found in our <a href="https://github.com/aurajs/boilerplate">boilerplate</a> repo. We do however recommend reading the rest of the getting started guide below to get acquainted with the general workflow.</p>
+
+<h4>Requirements</h4>
+
+<ol>
+<li><a href="http://twitter.github.com/bower/">bower</a>: run <code>npm install -g bower</code> if needed</li>
+<li><a href="https://github.com/gruntjs/grunt-cli">grunt-cli</a>: run <code>npm install -g grunt-cli</code> if needed</li>
+</ol>
+
+<h4>Building Aura.js</h4>
+
+<ol>
+<li>Run <code>npm install</code> to install build dependencies.</li>
+<li>Run <code>bower install</code> to install lib dependencies.</li>
+<li>Run <code>grunt build</code> and <code>aura.js</code> will be placed in <code>dist/</code>.</li>
+</ol>
+
+<h2>Running Tests</h2>
+
+<h4>Browser</h4>
+
+<p>Run <code>grunt</code>. Then visit <code>http://localhost:8899/spec/</code>.</p>
+
+<h4>CLI</h4>
+
+<p>Run <code>npm test</code>.</p>
+
+<h2>Creating an Application</h2>
+
+<p>The first step in creating an Aura application is to make an instance of <code>Aura</code>.</p>
+
+<pre><code class="js">var app = new Aura();
+</code></pre>
+
+<p>Now that we have our <code>app</code>, we can start it.</p>
+
+<pre><code class="js">app.start({
+  widget: &#39;body&#39;
+});
+</code></pre>
+
+<p>This starts the app by saying that it should search for widgets anywhere in the <code>body</code> of your HTML document.</p>
+
+<h2>Creating a Widget</h2>
+
+<p>By default widgets are retrieved from a directory called <code>widgets/</code> that must be at the same level as your HTML document.</p>
+
+<p>Let&#39;s say we want to create an &ldquo;hello&rdquo; widget. To do that we need to create a <code>widgets/hello/</code> directory</p>
+
+<p>This directory must contain:</p>
+
+<ul>
+<li>A <code>main.js</code> file. It will bootstrap and describe the widget. It is mandatory, no matter how small it can be.</li>
+<li>All the other files that your widget needs (models, templates, …).</li>
+</ul>
+
+<p>For our &ldquo;hello&rdquo; widget the <code>main.js</code> will be:</p>
+
+<pre><code class="js">define({
+  initialize: function () {
+    this.$el.html(&#39;&lt;h1&gt;Hello Aura&lt;/h1&gt;&#39;);
+  }
+});
+</code></pre>
+
+<h2>Declaring a Widget</h2>
+
+<p>Add the following code to your HTML document.</p>
+
+<pre><code class="html">&lt;div data-aura-widget=&quot;hello&quot;&gt;&lt;/div&gt;
+</code></pre>
+
+<p>Aura will call the <code>initialize</code> method that we have defined in <code>widgets/hello/main.js</code>.</p>
+
+<h2>Creating an extension</h2>
+
+<p>Imagine that we need an helper to reverse a string. In order to accomplish that we&#39;ll need to create an extension.</p>
+
+<pre><code class="js">define(&#39;extensions/reverse&#39;, {
+  initialize: function (app) {
+    app.core.util.reverse = function (string) {
+      return string.split(&#39;&#39;).reverse().join(&#39;&#39;);
+    };
+  }
+});
+</code></pre>
+
+<h2>Using extensions</h2>
+
+<p>To make our <code>reverse</code> helper available in our app, run the following code:</p>
+
+<pre><code class="js">app.use(&#39;extensions/reverse&#39;);
+</code></pre>
+
+<p>This will call the <code>initialize</code> function of our <code>reverse</code> extension.</p>
+
+<p>Calling <code>use</code> when your <code>app</code> is already started will throw an error.</p>
+
+<h2>Debugging</h2>
+
+<p>To make <code>app.logger</code> available, pass <code>{debug: true}</code> into Aura constructor:</p>
+
+<pre><code class="js">  var app = new Aura({debug: true});
+</code></pre>
+
+<p>Logger usage:</p>
+
+<pre><code class="js">// You can use logger from widgets or extensions
+var logger = sandbox.logger;
+
+logger.log(&#39;Hey&#39;);
+logger.warn(&#39;Hey&#39;);
+logger.error(&#39;Hey&#39;);
+</code></pre>
+
+<p>If you want to enable event logging, do this:</p>
+
+<pre><code class="js">var app = new Aura({debug: true, logEvents: true});
+</code></pre>
+
+<p>Also, when parameter <code>debug</code> is true, you can declare following function for any debug purposes:</p>
+
+<pre><code class="js">// Function will be called for all Aura apps in your project
+window.attachDebugger = function (app) {
+  // Do cool stuff with app object
+  console.log(app);
+
+  // Maybe you want to have access to Aura app via developer console?
+  window.aura = app;
+};
+</code></pre>
+
+<h1>Resources</h1>
+
+<h2>Yeoman generator</h2>
+
+<p>An Aura scaffolding generator (for Yeoman) is also available at <a href="https://github.com/dotCypress/generator-aura">Aura generator</a>.</p>
+
+<h2>Usage</h2>
+
+<pre><code class="bash">  # First make a new directory, and `cd` into it:
+  mkdir my-awesome-project &amp;&amp; cd $_
+
+  # Then install `generator-aura`:
+  npm install -g generator-aura
+
+  # Run `yo aura`, optionally passing an app name:
+  yo aura [app-name]
+
+  # Finally, install npm and bower dependencies:
+  npm install &amp;&amp; bower install --dev
+</code></pre>
+
+<h2>Generators</h2>
+
+<p>Available generators:</p>
+
+<ul>
+<li><a href="#widget">aura:widget</a></li>
+<li><a href="#extension">aura:extension</a></li>
+<li><a href="#styles">aura:styles</a></li>
+</ul>
+
+<h3>Widget</h3>
+
+<p>Generates a widget in <code>app/widgets</code>.</p>
+
+<p>Example:</p>
+
+<pre><code class="bash">yo aura:widget sample
+</code></pre>
+
+<p>Produces <code>app/widgets/sample/main.js</code></p>
+
+<h3>Extension</h3>
+
+<p>Generates a extension in <code>app/extensions</code>.</p>
+
+<p>Example:
+<code>bash
+yo aura:extension storage
+</code></p>
+
+<p>Produces <code>app/extensions/storage.js</code></p>
+
+<h3>Styles</h3>
+
+<p>Generates cool styles.</p>
+
+<p>Example:
+<code>bash
+yo aura:styles
+</code></p>
+
+<h5>Supported types:</h5>
+
+<ul>
+<li>Default (normalize.css)</li>
+<li>Twitter Bootstrap</li>
+<li>Twitter Bootstrap for Compass</li>
+<li>Zurb Foundation</li>
+</ul>
+
+<h2>Aura Development docs</h2>
+
+<ul>
+<li><a href="https://github.com/aurajs/aura/tree/master/notes">Notes</a></li>
+</ul>
+
+<h1>FAQs</h1>
+
+<ul>
+<li><a href="https://github.com/aurajs/aura/issues/223">Where does Aura fit in the MVC workflow?</a></li>
+<li><a href="https://github.com/aurajs/aura/issues/222">How do you initialize a widget with with data objects?</a></li>
+<li><a href="https://github.com/aurajs/aura/issues/224">Using multiple views and models in a widget</a></li>
+<li><a href="https://github.com/karlwestin/aura-example">Sharing collections of data</a></li>
+</ul>
+
+<h2>Why do developers use us?</h2>
+
+<ul>
+<li>&ldquo;The architecture and the fact that Aura Widgets are completely decoupled, will allow us to build an ecosystem of widgets that people can reuse internally or share with others.&rdquo;</li>
+<li>&ldquo;With WidgetSources and Require, we can load only the widgets that are needed by the app&hellip; at runtime.&rdquo;</li>
+<li>&ldquo;No JS is required to wire everything up, just include widgets with data-attributes in their markup&rdquo;</li>
+<li>&ldquo;Mediation, same thing here it&#39;s a prerequisite to make everything decoupled&hellip; but in addition, it allows us to write much less code&hellip;&rdquo;</li>
+<li>&ldquo;Template overrides FTW&rdquo;</li>
+</ul>
+
+<h1>Contribute</h1>
+
+<p>See the <a href="https://github.com/aurajs/aura/blob/master/contributing.md">contributing docs</a></p>
+
+<h1>Project status</h1>
+
+<p>Aura 0.8.x was well received by the developer community, but had regular requests for a few advanced capabilities. These included individual sandboxes, declarative widgets, support for Bower and a powerful Pub/Sub implementation amongst others.</p>
+
+<p>To cater for this, Aura has been getting a heavy re-write over the past few months and we anticipate releasing a beta that can be tested in April, 2013. This will be followed by detailed documentation and new demo applications.</p>
+
+<p>A version of Aura currently powers the <a href="http://hull.io">Hull.io</a> widget platform and we are honored to have members of that team directly contributing to the next version of the project.</p>
+</div>
+    </header>
+  </section>
+  <footer>
+    <section class="container">
+  <div class="row">
+    <div class="span2 offset1">
+      <ul class='unstyled'>
+        <li>© 2012 Addy Osmani</li>
+        <li>License : MIT</li>
+        <li>
+          <a href="http://hull.io">Design by hull.io</a>
+        </li>
+      </ul>
+    </div>
+    <div class="span6 offset1">
+      <p>
+        <strong>
+          Aura is the work of : Addy Osmani, Dustin Boston, Gerson Goulart, Tony Narlock, Sindre Sorhus, Peter Rudolfsen, Robert Djurasaj, Joel Hooks, Dan Lynch
+        </strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+  </footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+  <script src="assets/javascripts/app.js" type="text/javascript"></script>
+</body>
+</html>

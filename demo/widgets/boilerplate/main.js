@@ -1,1 +1,0 @@
-define(["sandbox","./views/app"],function(e,t){"use strict";return function(n){new t({el:e.dom.find(n.element)}),e.emit("bootstrap","boilerplate"),e.on("bootstrap",function(t){e.log("Boilerplate-bootstrap message from: "+t)}),e.on("*",function(t){e.log("Wildcard event from:",t)})}});

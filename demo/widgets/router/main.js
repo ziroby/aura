@@ -1,2 +1,0 @@
-/*globals Backbone*/
-define(["sandbox","underscore"],function(e,t){"use strict";return function(t){var n=e.mvc.Router({initialize:function(){Backbone.history.start()},routes:{"*router":"router"},router:function(t){var n=Array.prototype.slice;t=t.split("/"),e.emit.apply(this,Array.prototype.slice.call(t))}}),r=new n;e.emit("bootstrap","router"),e.on("bootstrap",function(t){e.log("Router-bootstrap message from: "+t)}),e.on("router",function(){e.log("Route in router widget: ",Array.prototype.slice.call(arguments))})}});
