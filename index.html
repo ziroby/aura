@@ -39,7 +39,7 @@
     <header class="row">
       <div class='span3 offset1'>  <div class="nav-container" id="sidenav">
     <ul class='nav nav-list'>
-      </li><li class='level_1'><a href="#aura-0-9pre">Aura 0.9pre</a><ul class='nav nav-list'><li class='level_2'><a href="#why-aura">Why Aura?</a></li><li class='level_2'><a href="#concepts">Concepts</a></li><li class='level_2'><a href="#getting-started">Getting started</a></li><li class='level_2'><a href="#creating-an-application">Creating an Application</a></li><li class='level_2'><a href="#creating-a-widget">Creating a Widget</a></li><li class='level_2'><a href="#declaring-a-widget">Declaring a Widget</a></li><li class='level_2'><a href="#creating-an-extension">Creating an extension</a></li><li class='level_2'><a href="#emitting-and-listening-for-event-notifications">Emitting and listening for event notifications</a></li><li class='level_2'><a href="#using-extensions">Using extensions</a></li><li class='level_2'><a href="#debugging">Debugging</a></li></ul></li><li class='level_1'><a href="#resources">Resources</a><ul class='nav nav-list'><li class='level_2'><a href="#yeoman-generator">Yeoman generator</a></li><li class='level_2'><a href="#usage">Usage</a></li><li class='level_2'><a href="#generators">Generators</a></li></ul></li><li class='level_1'><a href="#examples">Examples</a></li><li class='level_1'><a href="#faqs">FAQs</a></li><li class='level_1'><a href="#why-do-developers-use-us">Why do developers use us?</a></li><li class='level_1'><a href="#contribute">Contribute</a></li><li class='level_1'><a href="#project-status">Project status</a>
+      </li><li class='level_1'><a href="#aura-0-9pre">Aura 0.9pre</a><ul class='nav nav-list'><li class='level_2'><a href="#why-aura">Why Aura?</a></li><li class='level_2'><a href="#concepts">Concepts</a></li><li class='level_2'><a href="#getting-started">Getting started</a></li><li class='level_2'><a href="#creating-an-application">Creating an Application</a></li><li class='level_2'><a href="#creating-a-widget">Creating a Widget</a></li><li class='level_2'><a href="#declaring-a-widget">Declaring a Widget</a></li><li class='level_2'><a href="#creating-an-extension">Creating an extension</a></li><li class='level_2'><a href="#event-notifications">Event notifications</a></li><li class='level_2'><a href="#using-extensions">Using extensions</a></li><li class='level_2'><a href="#debugging">Debugging</a></li></ul></li><li class='level_1'><a href="#resources">Resources</a><ul class='nav nav-list'><li class='level_2'><a href="#yeoman-generator">Yeoman generator</a></li></ul></li><li class='level_1'><a href="#examples">Examples</a></li><li class='level_1'><a href="#faqs">FAQs</a></li><li class='level_1'><a href="#why-do-developers-use-us">Why do developers use us?</a></li><li class='level_1'><a href="#contribute">Contribute</a></li><li class='level_1'><a href="#project-status">Project status</a>
     </ul>
   </div>
 </div>
@@ -189,7 +189,7 @@ This means that they know nothing about each other. To make them communicate, a 
 });
 </code></pre>
 
-<h2>Emitting and listening for event notifications</h2>
+<h2>Event notifications</h2>
 
 <p>The Aura <a href="https://github.com/aurajs/aura/blob/master/lib/ext/mediator.js">Mediator</a> allows widgets to communicate with each other by subscribing, unsubscribing and emitting sandboxed event notifications. The signatures for these three methods are:</p>
 
@@ -272,7 +272,7 @@ window.attachDebugger = function (app) {
 
 <p>An Aura scaffolding generator (for Yeoman) is also available at <a href="https://github.com/dotCypress/generator-aura">Aura generator</a>.</p>
 
-<h2>Usage</h2>
+<h3>Usage</h3>
 
 <pre><code class="bash">  # First make a new directory, and `cd` into it:
   mkdir my-awesome-project &amp;&amp; cd $_
@@ -287,7 +287,7 @@ window.attachDebugger = function (app) {
   npm install &amp;&amp; bower install --dev
 </code></pre>
 
-<h2>Generators</h2>
+<h3>Generators</h3>
 
 <p>Available generators:</p>
 
