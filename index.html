@@ -39,7 +39,7 @@
     <header class="row">
       <div class='span3 offset1'>  <div class="nav-container" id="sidenav">
     <ul class='nav nav-list'>
-      </li><li class='level_1'><a href="#aura-0-9pre">Aura 0.9pre</a><ul class='nav nav-list'><li class='level_2'><a href="#why-aura">Why Aura?</a></li><li class='level_2'><a href="#concepts">Concepts</a></li><li class='level_2'><a href="#getting-started">Getting started</a></li><li class='level_2'><a href="#running-tests">Running Tests</a></li><li class='level_2'><a href="#creating-an-application">Creating an Application</a></li><li class='level_2'><a href="#creating-a-widget">Creating a Widget</a></li><li class='level_2'><a href="#declaring-a-widget">Declaring a Widget</a></li><li class='level_2'><a href="#creating-an-extension">Creating an extension</a></li><li class='level_2'><a href="#using-extensions">Using extensions</a></li><li class='level_2'><a href="#debugging">Debugging</a></li></ul></li><li class='level_1'><a href="#resources">Resources</a><ul class='nav nav-list'><li class='level_2'><a href="#yeoman-generator">Yeoman generator</a></li><li class='level_2'><a href="#usage">Usage</a></li><li class='level_2'><a href="#generators">Generators</a></li><li class='level_2'><a href="#aura-development-docs">Aura Development docs</a></li></ul></li><li class='level_1'><a href="#faqs">FAQs</a><ul class='nav nav-list'><li class='level_2'><a href="#why-do-developers-use-us">Why do developers use us?</a></li></ul></li><li class='level_1'><a href="#contribute">Contribute</a></li><li class='level_1'><a href="#project-status">Project status</a>
+      </li><li class='level_1'><a href="#aura-0-9pre">Aura 0.9pre</a><ul class='nav nav-list'><li class='level_2'><a href="#why-aura">Why Aura?</a></li><li class='level_2'><a href="#concepts">Concepts</a></li><li class='level_2'><a href="#getting-started">Getting started</a></li><li class='level_2'><a href="#creating-an-application">Creating an Application</a></li><li class='level_2'><a href="#creating-a-widget">Creating a Widget</a></li><li class='level_2'><a href="#declaring-a-widget">Declaring a Widget</a></li><li class='level_2'><a href="#creating-an-extension">Creating an extension</a></li><li class='level_2'><a href="#emitting-and-listening-for-event-notifications">Emitting and listening for event notifications</a></li><li class='level_2'><a href="#using-extensions">Using extensions</a></li><li class='level_2'><a href="#debugging">Debugging</a></li></ul></li><li class='level_1'><a href="#resources">Resources</a><ul class='nav nav-list'><li class='level_2'><a href="#yeoman-generator">Yeoman generator</a></li><li class='level_2'><a href="#usage">Usage</a></li><li class='level_2'><a href="#generators">Generators</a></li></ul></li><li class='level_1'><a href="#examples">Examples</a></li><li class='level_1'><a href="#faqs">FAQs</a></li><li class='level_1'><a href="#why-do-developers-use-us">Why do developers use us?</a></li><li class='level_1'><a href="#contribute">Contribute</a></li><li class='level_1'><a href="#project-status">Project status</a>
     </ul>
   </div>
 </div>
@@ -47,14 +47,17 @@
 
 <p><a href="https://travis-ci.org/aurajs/aura"><img alt="Build Status" src="https://travis-ci.org/aurajs/aura.png?branch=master" /></a></p>
 
-<p>Aura is an event-driven architecture for developing widget-based applications that scale. It works great with <a href="http://backbonejs.org">Backbone.js</a>, but is framework-agnostic, adapts many best-practice patterns for developing maintainable apps and has first-class support for modern tools like <a href="http://bower.io">Bower</a>, <a href="http://gruntjs.com">Grunt</a> and <a href="http://yeoman.io">Yeoman</a>.</p>
+<p>Aura is an event-driven architecture for developing scalable applications using reusable widgets. It works great with <a href="http://backbonejs.org">Backbone.js</a>, but is framework-agnostic, adapts many best-practice patterns for developing maintainable apps and has first-class support for modern tools like <a href="http://bower.io">Bower</a>, <a href="http://gruntjs.com">Grunt</a> and <a href="http://yeoman.io">Yeoman</a>.</p>
 
 <p>Aura has been used to develop applications like <a href="http://www.bobholt.me/2012/09/how-it-was-built-mit-reap/">MIT&#39;s Reap</a> and is currently under active development.</p>
 
-<p>Want to look at some sample apps built with Aura? Check out the <a href="https://github.com/sbellity/aura-github">GitHub client</a>, the <a href="https://github.com/hull/Github-Mobile/tree/with-hull">GitHub Mobile client</a>,  an Aura <a href="https://github.com/sbellity/aura-todos/">Todo</a> app implemented <a href="https://github.com/alexanderbeletsky/todomvc-aura">two</a> ways and <a href="https://github.com/hull/hullagram">Hullagram</a> - an Instagram clone built with Aura and <a href="http://hull.io">Hull.io</a>.
-You can also read <a href="http://blog.hull.io/post/46504817377/how-to-build-your-own-twitter-like-open-source-page">how to build your own Twitter-like &ldquo;Open Source&rdquo; page</a> using Aura.</p>
-
 <h2>Why Aura?</h2>
+
+<p>We&#39;ve seen a large shift in the JavaScript community for the past 3 years, with people starting to write web apps in a much more structured way. Yet, assembling the bits and pieces and actually starting to make apps is still a challenge. Another challenge is that most of the time you end up doing the same stuff all over again : you need a way to authenticate users, give them ways to communicate, exchange ideas, work or play together. You have to integrate with external services or APIs like Facebook or Twitter.</p>
+
+<p>Web apps are all about the end user experience (UI, DOM elements). The web development ecosystem is all about much more low level stuff. We need a way to package higher level abstractions and make them truly reusable, and that&#39;s what Aura is all about.</p>
+
+<p>Need some more reasons to use Aura?:</p>
 
 <ul>
 <li>It&#39;s basically <strong>glue</strong> for your application widgets, making it trivial to tie together a number of independently created widgets into a fully functional application.</li>
@@ -116,7 +119,7 @@ This means that they know nothing about each other. To make them communicate, a 
 <li>Run <code>grunt build</code> and <code>aura.js</code> will be placed in <code>dist/</code>.</li>
 </ol>
 
-<h2>Running Tests</h2>
+<h3>Running Tests</h3>
 
 <h4>Browser</h4>
 
@@ -186,6 +189,38 @@ This means that they know nothing about each other. To make them communicate, a 
 });
 </code></pre>
 
+<h2>Emitting and listening for event notifications</h2>
+
+<p>The Aura <a href="https://github.com/aurajs/aura/blob/master/lib/ext/mediator.js">Mediator</a> allows widgets to communicate with each other by subscribing, unsubscribing and emitting sandboxed event notifications. The signatures for these three methods are:</p>
+
+<ul>
+<li><code>sandbox.on(name, listener, context)</code></li>
+<li><code>sandbox.off(name, listener)</code></li>
+<li><code>sandbox.emit(data)</code></li>
+</ul>
+
+<p>Below we can see an example of a Backbone view using the Mediator to emit a notification when tasks have been cleared and subscribing to changes from <code>tasks.stats</code> in order to render when they are updated.</p>
+
+<pre><code class="js">define([&#39;hbs!./stats&#39;], function(template) {
+  return {
+    type: &#39;Backbone&#39;,
+    events: {
+      &#39;click button&#39;: &#39;clearCompleted&#39;
+    },
+    initialize: function() {
+      this.render();
+      this.sandbox.on(&#39;tasks.stats&#39;, _.bind(this.render, this));
+    },
+    render: function(stats) {
+      this.html(template(stats || {}));
+    },
+    clearCompleted: function() {
+      this.sandbox.emit(&#39;tasks.clear&#39;);
+    }
+  }
+});
+</code></pre>
+
 <h2>Using extensions</h2>
 
 <p>To make our <code>reverse</code> helper available in our app, run the following code:</p>
@@ -201,7 +236,7 @@ This means that they know nothing about each other. To make them communicate, a 
 
 <p>To make <code>app.logger</code> available, pass <code>{debug: true}</code> into Aura constructor:</p>
 
-<pre><code class="js">  var app = new Aura({debug: true});
+<pre><code class="js">var app = new Aura({debug: true});
 </code></pre>
 
 <p>Logger usage:</p>
@@ -216,7 +251,7 @@ logger.error(&#39;Hey&#39;);
 
 <p>If you want to enable event logging, do this:</p>
 
-<pre><code class="js">var app = new Aura({debug: true, logEvents: true});
+<pre><code class="js">  var app = new Aura({debug: true, logEvents: true});
 </code></pre>
 
 <p>Also, when parameter <code>debug</code> is true, you can declare following function for any debug purposes:</p>
@@ -302,7 +337,42 @@ yo aura:styles
 <li>Zurb Foundation</li>
 </ul>
 
-<h2>Aura Development docs</h2>
+<h1>Examples</h1>
+
+<p>Want to look at some sample apps built with Aura? Check out:</p>
+
+<h3>The <a href="https://github.com/sbellity/aura-github">GitHub client</a></h3>
+
+<p><img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/github-app.png"  width="600px"/></p>
+
+<p><img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/github-app2.png"  width="600px"/></p>
+
+<p><img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/github-app3.png"  width="600px"/></p>
+
+<p><img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/github-app4.png"  width="600px"/></p>
+
+<h3>The <a href="https://github.com/hull/Github-Mobile/tree/with-hull">GitHub Mobile client</a></h3>
+
+<p><img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/github-mobile.png"/></p>
+
+<h3><a href="https://github.com/hull/hullagram">Hullagram</a> - an Instagram clone built with Aura and <a href="http://hull.io">Hull.io</a>.</h3>
+
+<p><img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/hullagram-1.png"/>
+<img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/hullagram-2.png"/>
+<img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/hullagram-3.png"/>
+<img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/hullagram-4.png"/></p>
+
+<h3>An Aura <a href="https://github.com/sbellity/aura-todos/">TodoMVC</a> app implemented <a href="https://github.com/alexanderbeletsky/todomvc-aura">two</a> ways</h3>
+
+<p><img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/todomvc.png"/></p>
+
+<h3><a href="http://blog.hull.io/post/46504817377/how-to-build-your-own-twitter-like-open-source-page">How to build your own Twitter-like &ldquo;Open Source&rdquo; page</a> using Aura.</h3>
+
+<p><img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/opensource-page.png" width="600px"/></p>
+
+<h3>Writing a simple <a href="https://gist.github.com/sbellity/b44364f29fd89679ca39">GitHub widget</a> using Aura.</h3>
+
+<h3>Aura Development docs</h3>
 
 <ul>
 <li><a href="https://github.com/aurajs/aura/tree/master/notes">Notes</a></li>
@@ -317,7 +387,7 @@ yo aura:styles
 <li><a href="https://github.com/karlwestin/aura-example">Sharing collections of data</a></li>
 </ul>
 
-<h2>Why do developers use us?</h2>
+<h1>Why do developers use us?</h1>
 
 <ul>
 <li>&ldquo;The architecture and the fact that Aura Widgets are completely decoupled, will allow us to build an ecosystem of widgets that people can reuse internally or share with others.&rdquo;</li>
