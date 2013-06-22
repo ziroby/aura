@@ -30,7 +30,7 @@
       </div>
     </div>
     <a class="button" href="https://github.com/aurajs/aura/zipball/master">Download .zip</a>
-    <a class="button" href="https://github.com/aurajs/aura/tarball/master">Download .tar.gz</a>
+    <a class="button" href="https://github.com/aurajs/boilerplate/tarball/master">Download boilerplate</a>
     <a class="button faded" href="https://github.com/aurajs/aura">View on Github</a>
   </div>
 </div>
@@ -49,7 +49,33 @@
 
 <p>Aura is an event-driven architecture for developing scalable applications using reusable widgets. It works great with <a href="http://backbonejs.org">Backbone.js</a>, but is framework-agnostic, adapts many best-practice patterns for developing maintainable apps and has first-class support for modern tools like <a href="http://bower.io">Bower</a>, <a href="http://gruntjs.com">Grunt</a> and <a href="http://yeoman.io">Yeoman</a>.</p>
 
-<p>Aura has been used to develop applications like <a href="http://www.bobholt.me/2012/09/how-it-was-built-mit-reap/">MIT&#39;s Reap</a> and is currently under active development.</p>
+<p>Aura uses libraries like <a href="http://requirejs.org/">RequireJS</a> under the covers, but as solutions like ES6 modules and <a href="http://polymer-project.com">Polymer</a> become stable and usable, the project will move towards using them.</p>
+
+<h2>Widgets? I'm intrigued. Tell me more, sir.</h3>
+
+<p>A widget is something <strong><a href="http://juristr.com/blog/2013/04/modularity-in-javascript-frameworks/">atomic</a></strong> with a clear responsibility. A mini-app basically that can be instantiated (possibly multiple times) on an arbitrary part of your application. You might not be accustomed to thinking like this, preferring to build a highly coupled app. That might work just fine initially, but once it gets more complex you can run into trouble. Therefore, next time when you start building something bigger, stop for a moment and try to identify possible widgets.</p>
+
+<p>Consider for example GitHub’s site:</p>
+
+<p>&nbsp;</p>
+<p>
+<img src="assets/images/github.jpg"/>
+</p>
+<p>&nbsp;</p>
+
+<p>Separating your application into smaller parts is essential for keeping your architecture clean, reusable and mainly maintainable. The principle is a known concept in computer science: “divide and conquer”. Divide everything up into smaller parts which have lower complexity, are easier to test and cause fewer headaches. Then compose them together to form your larger application.</p>
+
+<h2>But Wait: My Widgets Have to Communicate!</h2>
+
+<p>Modules (or widgets) within your application need to communicate with each other. Such communication creates dependencies as widget An eeds to have a reference to widget B if it needs to invoke some operation on it, right? Well, not necessarily, as that would again couple those widgets together and you couldn’t exchange widget B arbitrarily without having to also change widget A.</p>
+
+<p>Therefore, a common practice for creating a modular architecture is to decouple communication among components through event broadcasting mechanisms. Aura comes with global and widget-level messaging patterns, making this a breeze.</p>
+
+<p>&nbsp;</p>
+<p>
+<img src="assets/images/multi.jpg"/>
+</p>
+<p>&nbsp;</p>
 
 <h2>Why Aura?</h2>
 
