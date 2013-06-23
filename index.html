@@ -51,7 +51,7 @@
 
 <p>Aura uses libraries like <a href="http://requirejs.org/">RequireJS</a> under the covers, but as solutions like ES6 modules and <a href="http://polymer-project.com">Polymer</a> become stable and usable, the project will move towards using them.</p>
 
-<h2>Widgets? I'm intrigued. Tell me more, sir.</h3>
+<h2>Everything is a widget.</h3>
 
 <p>A widget is something <strong><a href="http://juristr.com/blog/2013/04/modularity-in-javascript-frameworks/">atomic</a></strong> with a clear responsibility. A mini-app basically that can be instantiated (possibly multiple times) on an arbitrary part of your application. You might not be accustomed to thinking like this, preferring to build a highly coupled app. That might work just fine initially, but once it gets more complex you can run into trouble. Therefore, next time when you start building something bigger, stop for a moment and try to identify possible widgets.</p>
 
@@ -76,6 +76,129 @@
 <img src="assets/images/multi.jpg"/>
 </p>
 <p>&nbsp;</p>
+
+
+<h2>A Quick Example</h2>
+
+<h3>How does it work ?</h3>
+
+<p>Widgets are completely decoupled, they only can talk to each other via events. You can't have a handle on them from the outside, and themselves are just aware of what you explicitely make available throught their <code>sandboxes</code>.</p>
+
+<p>To build your app, you can assemble widgets via AuraJS's HTML API, by using the <code>data-aura-widget</code> attribute.</p>
+
+<p>Let's take an example. Let's say that we want to build a Github Issues app. We need to be able to :</p>
+
+<ul>
+<li>Display lists of issues from specific repos</li>
+<li>Filter those issues</li>
+</ul>
+
+
+<p>Now let's make some widgets, but first we need a way to talk to <a href="http://developer.github.com/v3/issues/">Github's API</a>.</p>
+
+<p>Here is a simple <a href="https://github.com/aurajs/aura/blob/master/notes/extensions.md">AuraJS extension</a> that does just that :</p>
+
+<p><strong>extensions/aura-github.js</strong></p>
+
+<pre><code>define({
+  initialize: function (app) {
+    app.sandbox.github = function (path, verb, data) {
+      var dfd = $.Deferred();
+      var token = app.config.github.token;
+      verb = verb || 'get';
+      if (data &amp;&amp; verb != 'get') {
+        data = JSON.stringify(data);
+      }
+      $.ajax({
+        type: verb,
+        url: 'https://api.github.com/' + path,
+        data: data,
+        headers: {
+          "Authorization": "token " + token
+        },
+        success: dfd.resolve,
+        error: dfd.reject
+      });
+      return dfd;
+    };
+  }
+});
+</code></pre>
+
+<p>This extension exposes in all our widgets a way to talk to Github's API via the <code>this.sandbox.github</code> method.</p>
+
+<p> To use it in your aura app :</p>
+
+<p> <strong>app.js</strong></p>
+
+<pre><code>var app = new Aura({
+  github: { token: 'current-user-token-here' }
+});
+app.use('extensions/aura-github');
+app.start({ widgets: 'body' });
+</code></pre>
+
+<p>And now, let's write the <code>issues</code> widget :</p>
+
+<p><strong>widgets/issues/main.js</strong></p>
+
+<pre><code>define(['underscore', 'text!./issues.html'], function(_, tpl) {
+
+  // Allow template to be overriden locally 
+  // via a text/template script tag
+  var template, customTemplate = $('script['data-aura-template="github/issues"]');
+  if (customTemplate.length &gt; 0) {
+    template = _.template(customTemplate.html());
+  } else {
+    template = _.template(tpl);
+  }
+
+  return {
+    initialize: function() {
+      _.bindAll(this);
+      this.repo   = this.options.repo;
+      this.filter = this.options.filter || {};
+      this.sandbox.on('issues.filter', this.fetch, this);
+      this.fetch();
+    },
+    fetch: function(filter) {
+      this.filter = _.extend(this.filter, filter || {});
+      var path = 'repos/' + this.repo + '/issues';
+      return this.sandbox.github(path, 'get', this.filter).then(this.render);
+    },
+    render: function(issues) {
+      this.html(template({
+        issues: issues,
+        filter: this.filter,
+        repo: this.repo
+      }));
+    }
+  };
+});
+</code></pre>
+
+<p>Now we can place this widget everywhere in our app by using Aura's HTML API based on data-attributes.</p>
+
+<pre><code>&lt;div data-aura-widget="issues" data-aura-repo="aurajs/aura"&gt;&lt;/div&gt;
+</code></pre>
+
+<p>You can even have multiple instances of this widget in you page :</p>
+
+<pre><code>&lt;div class='row'&gt;
+  &lt;div class='span4' data-aura-widget="issues" data-aura-repo="aurajs/aura"&gt;&lt;/div&gt;
+  &lt;div class='span4' data-aura-widget="issues" data-aura-repo="emberjs/ember.js"&gt;&lt;/div&gt;
+  &lt;div class='span4' data-aura-widget="issues" data-aura-repo="documentcloud/backbone"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Any other widget can now emit <code>issues.filter</code>  events that these widgets will respond to.
+For example in another widget that will allow the user to filter the issues lists, we can have :</p>
+
+<pre><code>this.sandbox.emit('issues.filter', { state: 'closed' });
+</code></pre>
+
+<p>You can find a <a href="http://github.com/sbellity/aura-github">Github client demo app based on AuraJS + a bunch of Github widgets here</a>.</p>
+
 
 <h2>Why Aura?</h2>
 
