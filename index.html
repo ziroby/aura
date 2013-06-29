@@ -155,7 +155,7 @@
 
       // Allow template to be overriden locally 
       // via a text/template script tag
-      var template, customTemplate = $(&#39;script[&#39;data-aura-template=&quot;github/issues&quot;]&#39;);
+      var template, customTemplate = $(&#39;script[data-aura-template=&quot;github/issues&quot;]&#39;);
       if (customTemplate.length &amp;gt; 0) {
         template = _.template(customTemplate.html());
       } else {
@@ -326,7 +326,7 @@ This means that they know nothing about each other. To make them communicate, a 
 
 <p>Add the following code to your HTML document.</p>
 
-<pre><code class="html">    &lt;div data-aura-widget=&quot;hello&quot;&gt;&lt;/div&gt;
+<pre><code class="html">    &amp;lt;div data-aura-widget=&quot;hello&quot;&amp;gt;&amp;lt;/div&amp;gt;
 </code></pre>
 
 <p>Aura will call the <code>initialize</code> method that we have defined in <code>widgets/hello/main.js</code>.</p>
