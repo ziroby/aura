@@ -25,7 +25,7 @@
         </div>
         <div class="span8">
           <h2 class="title">
-            A clean and scalable architecture for complex javascript applications. </h2>
+            A framework-agnostic architecture for defining reusable components that work well together. </h2>
         </div>
       </div>
     </div>
@@ -47,9 +47,11 @@
 
 <p><a href="https://travis-ci.org/aurajs/aura"><img alt="Build Status" src="https://travis-ci.org/aurajs/aura.png?branch=master" /></a></p>
 
-<p>Aura is an event-driven architecture for developing scalable applications using reusable widgets. It works great with <a href="http://backbonejs.org">Backbone.js</a>, but is framework-agnostic, adapts many best-practice patterns for developing maintainable apps and has first-class support for modern tools like <a href="http://bower.io">Bower</a>, <a href="http://gruntjs.com">Grunt</a> and <a href="http://yeoman.io">Yeoman</a>.</p>
+<p>Don't worry, we're not an MV* framework ;) Aura is an <strong>event-driven architecture for wrapping your code into reusable widgets and extensions that can easily communicate with each other.</strong></p> 
 
-<p>Aura uses libraries like <a href="http://requirejs.org/">RequireJS</a> under the covers, but as solutions like ES6 modules and <a href="http://www.polymer-project.org">Polymer</a> become stable and usable, the project will move towards using them.</p>
+<p>We work great with <strong>existing</strong> frameworks like <a href="http://backbonejs.org">Backbone.js</a> or <a href="http://emberjs.com">Ember</a>, but are framework-agnostic, adapting many best-practice patterns for developing maintainable applications.</p>
+
+We have first-class support for modern tools like <a href="http://bower.io">Bower</a>, <a href="http://gruntjs.com">Grunt</a> and <a href="http://yeoman.io">Yeoman</a> and uses libraries like <a href="http://requirejs.org/">RequireJS</a> under the covers (for now). As solutions like ES6 modules and <a href="http://www.polymer-project.org">Polymer</a> become stable and usable, the project will move towards using them.</p>
 
 <h2>Everything is a widget.</h3>
 
@@ -67,7 +69,7 @@
 
 <h2>But Wait: My Widgets Have to Communicate!</h2>
 
-<p>Modules (or widgets) within your application need to communicate with each other. Such communication creates dependencies as widget An eeds to have a reference to widget B if it needs to invoke some operation on it, right? Well, not necessarily, as that would again couple those widgets together and you couldn’t exchange widget B arbitrarily without having to also change widget A.</p>
+<p>Modules (or widgets) within your application need to communicate with each other. Such communication creates dependencies as <code>widget A</code> needs to have a reference to <code>widget B</code> if it needs to invoke some operation on it, right? Well, not necessarily, as that would again couple those widgets together and you couldn’t exchange widget B arbitrarily without having to also change <code>widget A</code>.</p>
 
 <p>Therefore, a common practice for creating a modular architecture is to decouple communication among components through event broadcasting mechanisms. Aura comes with global and widget-level messaging patterns, making this a breeze.</p>
 
